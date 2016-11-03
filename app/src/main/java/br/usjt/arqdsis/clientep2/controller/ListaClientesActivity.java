@@ -9,11 +9,13 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import br.usjt.arqdsis.clientep2.R;
 import br.usjt.arqdsis.clientep2.model.Cliente;
 import br.usjt.arqdsis.clientep2.model.ClienteAdapter;
+import br.usjt.arqdsis.clientep2.model.ClienteRequester;
 import br.usjt.arqdsis.clientep2.model.Data;
 
 public class ListaClientesActivity extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class ListaClientesActivity extends AppCompatActivity {
         atividade = this;
         Intent intent = getIntent();
         String chave = intent.getStringExtra(MainActivity.CHAVE);
-        lista = Data.buscaClientes(chave);
+        lista = ((ArrayList<Cliente>)intent.getSerializableExtra(MainActivity.LISTA)).toArray(new Cliente[0]);
         BaseAdapter adapter = new ClienteAdapter(this, lista);
         ListView listView = (ListView)findViewById(R.id.Lista_Clientes);
         listView.setAdapter(adapter);

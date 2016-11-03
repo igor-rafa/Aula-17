@@ -1,6 +1,9 @@
 package br.usjt.arqdsis.clientep2.model;
 
-public class Cliente {
+import java.io.Serializable;
+import java.util.Comparator;
+
+public class Cliente implements Comparable<Cliente>, Serializable{
     private int id;
     private String nome, fone, email;
 
@@ -58,5 +61,10 @@ public class Cliente {
                 ", fone='" + fone + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Cliente cliente) {
+        return 0;
     }
 }
